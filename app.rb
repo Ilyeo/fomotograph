@@ -120,7 +120,7 @@ get '/products' do
           <a href='/products/location/<%= location %>'>
           <div class='product'>
             <div class='thumb'>
-              <img src='<%= DATA.select { |product| product['loc'] == location }.sample['url'] %>' />
+              <img src='<%= DATA.select { |product| product['location'] == location }.sample['url'] %>' />
             </div>
             <div class='caption'>
               <%= location != 'us' ? location.capitalize : location.upcase %>
@@ -169,7 +169,7 @@ get '/products/location/:location' do
         <h1> <%= params[:location] != 'us' ? params[:location].capitalize : params[:location].upcase %> </h1>
         <div id='wrapper'>
 
-        <% products = DATA.select{ |product| product['loc'] == params[:location] } %>
+        <% products = DATA.select{ |product| product['location'] == params[:location] } %>
 
         <% products.each do |product| %>
           <a href='/products/<%= product['id'] %>'>
@@ -226,7 +226,7 @@ get '/products/:id' do
         <p class='summary'> <%= product['summary'] %> </p>
         <p class='summary'>Order your prints today for $<%= product['price'] %></p>
         <img class='full' src='<%= product['url'] %>' />
-        <a class='small-button' href='/products/location/<%= product['loc'] %>'> View All <%= product['loc'] != 'us' ? product['loc'].capitalize : product['loc'].upcase %> Products </a>
+        <a class='small-button' href='/products/location/<%= product['location'] %>'> View All <%= product['location'] != 'us' ? product['location'].capitalize : product['location'].upcase %> Products </a>
       </div>
 
       <div id='footer'>
