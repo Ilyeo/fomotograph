@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'sinatra'
+require_relative 'models/product.rb'
 require 'httparty'
 require 'json'
 
