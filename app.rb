@@ -42,3 +42,10 @@ get '/products/:id' do
     @page_title = @product.title
   erb :single
 end
+
+get '/deals' do
+    @limit = 10
+    @page_title = "Deals under $#{@limit}"
+    @products = Product.under(@limit)
+    erb :category
+end

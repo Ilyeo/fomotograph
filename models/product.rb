@@ -43,7 +43,12 @@ class Product
 
     # return a product from a given id
     def self.find_by_id(id)
-        self.all.select { |product| product.id == id.to_i }.first
+        self.all.select{ |product| product.id == id.to_i }.first
+    end
+
+    # return an array of products from a given limit 
+    def self.under(limit)
+        self.all.select{ |product| product.price < limit }
     end
 
 end
